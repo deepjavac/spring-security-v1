@@ -15,8 +15,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
+    /**
+     * WebSecurityConfigurerAdapter provide configure method which takes HttpSecurity to
+     * provide Authorization Functionality
+     * **/
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests()
+                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/user").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/").permitAll()
+                .and()
+                .formLogin();
+    }
 
-//    @Override
+    //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http
 //                .authorizeRequests()
@@ -33,6 +46,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .permitAll();
 //    }
 
+
+    /**
+     * WebSecurityConfigurerAdapter provide configure method which takes AuthenticationManagerBuilder to
+     * create
+     * In memory Authentication
+     * **/
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
