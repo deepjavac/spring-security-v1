@@ -11,4 +11,4 @@ There are five main Components in Spring Security
 
   # Authentication 
   This component is generally use to identify the user or visitor. To authenticate any user he/she needs to prove that who is he/she.
-![AUTH!]{https://github.com/deepjavac/spring-security-v1/blob/master/src/main/resources/static/images/auth-cycle.png}
+![AUTH!](https://github.com/deepjavac/spring-security-v1/blob/master/src/main/resources/static/images/auth-cycle.png)
